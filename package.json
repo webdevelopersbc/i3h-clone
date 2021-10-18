@@ -2,6 +2,7 @@
   "name": "nhlapi",
   "version": "0.0.0",
   "scripts": {
+    "heroku-postbuild": "ng build --prod",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
@@ -12,6 +13,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/build-angular": "~0.1000.4",
+    "@angular/cli": "~10.0.4",
     "@angular/animations": "~10.0.5",
     "@angular/cdk": "^10.1.1",
     "@angular/common": "~10.0.5",
@@ -31,8 +34,6 @@
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1000.4",
-    "@angular/cli": "~10.0.4",
     "@angular/compiler-cli": "~10.0.5",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
@@ -50,5 +51,9 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
+  },
+  "engines":{
+    "node": "14.6.0",
+    "npm": "7.11.2"
   }
 }
