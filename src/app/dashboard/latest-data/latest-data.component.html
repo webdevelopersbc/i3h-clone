@@ -1,0 +1,198 @@
+<h2 class="title">Latest Data</h2>
+
+<div class="content">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let match of matches$ | async" class="panel">
+      <mat-expansion-panel-header>
+        <mat-panel-title style="display: flex; align-items: center;">
+          <img style="margin-right: 16px;" [src]="match | matchFilter:0:'crest'" alt="Crest" class="crest">
+          <span style="margin-right: 16px;"> VS </span>
+          <img style="margin-right: 24px;" [src]="match | matchFilter:1:'crest'" alt="Crest" class="crest">
+
+          <mat-chip color="primary" style="margin-right: 16px;"
+            [selected]="(match | matchFilter:0:'goals') > (match | matchFilter:1:'goals')">
+            {{ (match | matchFilter:0:'name') }}
+            ({{ (match | matchFilter:0:'goals') }})
+          </mat-chip>
+
+          <mat-chip [selected]="(match | matchFilter:0:'goals') < (match | matchFilter:1:'goals')">
+            {{ (match | matchFilter:1:'name') }}
+            ({{ (match | matchFilter:1:'goals') }})
+          </mat-chip>
+
+          <span style="margin-left: auto;">{{match.timestamp | timeAgo}}</span>
+
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-tab-group>
+        <mat-tab label="Match Stats">
+          <mat-list>
+            <ng-container *ngFor="let stat of matchStats">
+              <mat-list-item style="display: flex; justify-content: center;">
+                <span style="margin-right: 24px;">{{(match | matchFilter:0:stat.stat)}}</span>
+                <span>{{stat.txt}}</span>
+                <span style="margin-left: 24px;">{{(match | matchFilter:1:stat.stat)}}</span>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </ng-container>
+          </mat-list>
+        </mat-tab>
+
+        <mat-tab label="Player Stats">
+
+          <div class="player-tables-container">
+            <h3>{{ (match | matchFilter:0:'name') }}</h3>
+            <table mat-table [dataSource]="match | matchPlayers:0" style="margin-right: 12px;">
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let player">
+                  {{player.playername}}
+                </td>
+              </ng-container>
+
+              <!-- Position Column -->
+              <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> Position </th>
+                <td mat-cell *matCellDef="let player">
+                  {{player.position}}
+                </td>
+              </ng-container>
+
+              <!-- Goals Column -->
+              <ng-container matColumnDef="goals">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Goals </th>
+                <td mat-cell *matCellDef="let player" style="text-align: center;">
+                  {{player.skgoals}}
+                </td>
+              </ng-container>
+
+              <!-- Assists Column -->
+              <ng-container matColumnDef="assists">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Assists </th>
+                <td mat-cell *matCellDef="let player" style="text-align: center;">
+                  {{player.skassists}}
+                </td>
+              </ng-container>
+
+              <!-- Plus Minus Column -->
+              <ng-container matColumnDef="plusminus">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Plus Minus </th>
+                <td mat-cell *matCellDef="let player" style="text-align: center;">
+                  {{player.skplusmin}}
+                </td>
+              </ng-container>
+
+              <!-- Shots Column -->
+              <ng-container matColumnDef="shots">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Shots </th>
+                <td mat-cell *matCellDef="let player" style="text-align: center;">
+                  {{player.skshots}}
+                </td>
+              </ng-container>
+
+              <!-- Face Off Wins Column -->
+              <ng-container matColumnDef="faceoffwins">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Face Off Wins </th>
+                <td mat-cell *matCellDef="let player" style="text-align: center;">
+                  {{player.skfow}}
+                </td>
+              </ng-container>
+
+              <!-- Takeaways Column -->
+              <ng-container matColumnDef="takeaways">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Takeaways </th>
+                <td mat-cell *matCellDef="let player" style="text-align: center;">
+                  {{player.sktakeaways}}
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let player; columns: displayedColumns;"></tr>
+            </table>
+
+            <h3>{{ (match | matchFilter:1:'name') }}</h3>
+            <table mat-table [dataSource]="match | matchPlayers:1">
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let player">
+                  {{player.playername}}
+                </td>
+              </ng-container>
+
+              <!-- Position Column -->
+              <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> Position </th>
+                <td mat-cell *matCellDef="let player">
+                  {{player.position}}
+                </td>
+              </ng-container>
+
+              <!-- Goals Column -->
+              <ng-container matColumnDef="goals">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Goals </th>
+                <td mat-cell *matCellDef="let player" style="text-align: center;">
+                  {{player.skgoals}}
+                </td>
+              </ng-container>
+
+              <!-- Assists Column -->
+              <ng-container matColumnDef="assists">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Assists </th>
+                <td mat-cell *matCellDef="let player" style="text-align: center;">
+                  {{player.skassists}}
+                </td>
+              </ng-container>
+
+              <!-- Plus Minus Column -->
+              <ng-container matColumnDef="plusminus">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Plus Minus </th>
+                <td mat-cell *matCellDef="let player" style="text-align: center;">
+                  {{player.skplusmin}}
+                </td>
+              </ng-container>
+
+              <!-- Shots Column -->
+              <ng-container matColumnDef="shots">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Shots </th>
+                <td mat-cell *matCellDef="let player" style="text-align: center;">
+                  {{player.skshots}}
+                </td>
+              </ng-container>
+
+              <!-- Face Off Wins Column -->
+              <ng-container matColumnDef="faceoffwins">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Face Off Wins </th>
+                <td mat-cell *matCellDef="let player" style="text-align: center;">
+                  {{player.skfow}}
+                </td>
+              </ng-container>
+
+              <!-- Takeaways Column -->
+              <ng-container matColumnDef="takeaways">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Takeaways </th>
+                <td mat-cell *matCellDef="let player" style="text-align: center;">
+                  {{player.sktakeaways}}
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let player; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+
+        </mat-tab>
+
+        <mat-tab label="Raw Match Response From API">
+          <pre>{{match | json}}</pre>
+        </mat-tab>
+      </mat-tab-group>
+
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

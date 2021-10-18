@@ -1,0 +1,36 @@
+<h2 class="title">Manage Teams</h2>
+
+<button mat-raised-button color="primary" class="add-button" (click)="addTeam()">Add A Team</button>
+
+<div class="table-container">
+  <table mat-table [dataSource]="clubs$" *ngIf="(clubs$ | async) && (clubs$ | async)?.length > 0">
+
+    <!-- Crest Column -->
+    <ng-container matColumnDef="crest">
+      <th mat-header-cell *matHeaderCellDef> Crest </th>
+      <td mat-cell *matCellDef="let club">
+        <img src="{{club | mapCrest}}" alt="Crest" class="crest">
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Club </th>
+      <td mat-cell *matCellDef="let club"> {{club.name}} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let club">
+        <button mat-icon-button color="primary" aria-label="Delete User" (click)="deleteClub(club)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let club; columns: displayedColumns;" class="data-row"></tr>
+  </table>
+
+</div>

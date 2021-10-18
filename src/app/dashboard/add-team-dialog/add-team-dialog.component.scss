@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+
+.data-row {
+  cursor: pointer;
+
+  &.selected {
+    background-color: #ffd740;
+
+    &:hover {
+      background-color: #facc25;
+    }
+  }
+
+  &:hover {
+    background-color: whitesmoke;
+  }
+}

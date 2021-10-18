@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" class="toolbar">
+  <span>i3HL API Dashboard</span>
+  <span style="flex: 1 1 auto"></span>
+  <mat-icon aria-hidden="false" aria-label="Account name" style="margin-right: 8px">account_box</mat-icon>
+  <span>{{(user$ | async)?.name}}</span>
+</mat-toolbar>
+
+<mat-card class="manage-users-card">
+  <app-user-management class="manage-users"></app-user-management>
+</mat-card>
+
+<mat-card class="manage-updates-card">
+  <app-updates-management (updated)="updated()"></app-updates-management>
+</mat-card>
+
+<mat-card class="manage-teams">
+  <app-team-management></app-team-management>
+</mat-card>
+
+<mat-card class="latest-data">
+  <app-latest-data #latestData></app-latest-data>
+</mat-card>

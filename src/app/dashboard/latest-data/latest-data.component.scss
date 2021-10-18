@@ -1,0 +1,38 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    'title'
+    'content';
+    height: 100%;
+}
+
+.title {
+  grid-area: title;
+}
+
+.content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.panel {
+  margin-bottom: 16px;
+}
+
+.crest {
+  height: 40px;
+  width: auto;
+}
+
+.player-tables-container {
+  display: flex;
+  width: 100%;
+
+  > table {
+    flex: 1 1 auto;
+  }
+}

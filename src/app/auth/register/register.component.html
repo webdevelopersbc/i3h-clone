@@ -1,0 +1,62 @@
+<mat-card class="card mat-elevation-z8">
+  <mat-card-header>
+    <div mat-card-avatar class="logo-image"></div>
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-subtitle>
+      Enter your registration details. Note: you will not be able to log in until an administrator grants you access.
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="registrationForm" class="content-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error
+          *ngIf="registrationForm.get('email').hasError('email') && !registrationForm.get('email').hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="registrationForm.get('email').hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error
+          *ngIf="registrationForm.get('name').hasError('minlength') && !registrationForm.get('name').hasError('required')">
+          Minimum length is 3 characters
+        </mat-error>
+        <mat-error *ngIf="registrationForm.get('name').hasError('required')">
+          Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-error
+          *ngIf="registrationForm.get('password').hasError('minlength') && !registrationForm.get('password').hasError('required')">
+          Minimum length is 6 characters
+        </mat-error>
+        <mat-error
+          *ngIf="registrationForm.get('password').hasError('maxlength') && !registrationForm.get('password').hasError('required')">
+          Max length is 20 characters
+        </mat-error>
+        <mat-error *ngIf="registrationForm.get('password').hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="actions-container">
+      <button mat-raised-button color="accent" [routerLink]="['../login']">
+        <mat-icon aria-hidden="false" aria-label="Go back icon">arrow_back</mat-icon>
+        Back to Log In
+      </button>
+      <button mat-raised-button color="primary" (click)="onSubmit()">Register</button>
+    </div>
+  </mat-card-actions>
+</mat-card>

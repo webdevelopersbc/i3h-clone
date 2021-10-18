@@ -1,0 +1,54 @@
+<h2 class="title">Manage Users</h2>
+
+<div class="table-container">
+  <table mat-table [dataSource]="users$">
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+    </ng-container>
+
+    <!-- Admin Column -->
+    <ng-container matColumnDef="isAdmin">
+      <th mat-header-cell *matHeaderCellDef> Is Admin </th>
+      <td mat-cell *matCellDef="let user">
+        <mat-chip-list aria-label="Account access">
+          <mat-chip color="primary" *ngIf="user.isAdmin" selected>ADMIN</mat-chip>
+          <mat-chip *ngIf="!user.isAdmin">NO ACCESS</mat-chip>
+        </mat-chip-list>
+      </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let user" class="actions">
+        <button mat-icon-button color="primary" aria-label="Make admin"
+          [disabled]="user.isAdmin || (user$ | async)?.email === user.email" (click)="makeAdmin(user)">
+          <mat-icon>person_add</mat-icon>
+        </button>
+
+        <button mat-icon-button color="primary" aria-label="Remove Access"
+          [disabled]="!user.isAdmin || (user$ | async)?.email === user.email" (click)="removeAccess(user)">
+          <mat-icon>person_remove</mat-icon>
+        </button>
+
+        <button mat-icon-button color="primary" aria-label="Delete User"
+          [disabled]="(user$ | async)?.email === user.email" (click)="delete(user)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let user; columns: displayedColumns;" class="data-row"
+      [class.user-row]="(user$ | async)?.email === user.email"></tr>
+  </table>
+</div>

@@ -1,0 +1,45 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    'title'
+    'table';
+    height: 100%;
+}
+
+.title {
+  grid-area: title;
+}
+
+.table-container {
+  grid-area: table;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.data-row:hover {
+  background: whitesmoke;
+}
+
+.user-row {
+  background: #673ab7;
+
+  > td {
+    color: #ffffff;
+  }
+
+  &:hover {
+    > td {
+      color: rgba(0, 0, 0, 0.87);
+    }
+  }
+}
+
+.actions {
+  > * {
+    flex: 0 0 auto;
+    margin-right: 8px;
+  }
+}

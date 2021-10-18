@@ -1,0 +1,85 @@
+<h2 mat-dialog-title>ADD A NEW TEAM</h2>
+
+<mat-dialog-content class="content">
+  <form [formGroup]="searchForm" class="form-container" (ngSubmit)="onSubmit()">
+    <mat-form-field style="margin-right: 16px;">
+      <mat-label>Search</mat-label>
+      <input matInput type="text" formControlName="search">
+      <button mat-button *ngIf="searchForm.get('search').value" matSuffix mat-icon-button aria-label="Clear"
+        (click)="searchForm.get('search').setValue('')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-button-toggle-group formControlName="platform" aria-label="Platform" style="margin-right: 24px;">
+      <mat-button-toggle value="xboxone">XBOX ONE</mat-button-toggle>
+      <mat-button-toggle value="ps4">PS4</mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <button mat-raised-button type="submit" color="primary">GO</button>
+  </form>
+
+  <img src="/assets/loading.svg" alt="Loading icon" *ngIf="loading">
+
+  <h2 *ngIf="(clubs$ | async) && (clubs$ | async)?.length < 1">No Results were returned</h2>
+
+  <table mat-table [dataSource]="clubs$" class="mat-elevation-z8"
+    *ngIf="(clubs$ | async) && (clubs$ | async)?.length > 0">
+
+    <!-- Crest Column -->
+    <ng-container matColumnDef="crest">
+      <th mat-header-cell *matHeaderCellDef> Crest </th>
+      <td mat-cell *matCellDef="let club">
+        <img src="{{club | mapCrestFromSearch}}" alt="Crest">
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Club </th>
+      <td mat-cell *matCellDef="let club"> {{club.name}} </td>
+    </ng-container>
+
+    <!-- Division Column -->
+    <ng-container matColumnDef="division">
+      <th mat-header-cell *matHeaderCellDef> Division </th>
+      <td mat-cell *matCellDef="let club"> {{club.bestDivision}} </td>
+    </ng-container>
+
+    <!-- Points Column -->
+    <ng-container matColumnDef="points">
+      <th mat-header-cell *matHeaderCellDef> Points </th>
+      <td mat-cell *matCellDef="let club"> {{club.bestPoints}} </td>
+    </ng-container>
+
+    <!-- Wins Column -->
+    <ng-container matColumnDef="wins">
+      <th mat-header-cell *matHeaderCellDef> Wins </th>
+      <td mat-cell *matCellDef="let club"> {{club.wins}} </td>
+    </ng-container>
+
+    <!-- Loses Column -->
+    <ng-container matColumnDef="loses">
+      <th mat-header-cell *matHeaderCellDef> Loses </th>
+      <td mat-cell *matCellDef="let club"> {{club.loses}} </td>
+    </ng-container>
+
+    <!-- OTL Column -->
+    <ng-container matColumnDef="otl">
+      <th mat-header-cell *matHeaderCellDef> OTL </th>
+      <td mat-cell *matCellDef="let club"> {{club.otl}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let club; columns: displayedColumns;" class="data-row" (click)="toggleClub(club)"
+      [class.selected]="clubsAdded.includes(club.clubInfo.clubId)"></tr>
+  </table>
+
+</mat-dialog-content>
+
+<mat-dialog-actions style="display: flex; justify-content: flex-end;">
+  <button mat-raised-button mat-dialog-close>CANCEL</button>
+  <button mat-raised-button color="primary" [disabled]="clubsAdded.length < 1" (click)="addTeams()">
+    ADD {{clubsAdded.length}} TEAM{{clubsAdded.length === 1 ? '' : 'S'}}
+  </button>
+</mat-dialog-actions>
