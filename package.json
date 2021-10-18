@@ -8,8 +8,7 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "npm install --prefix api && npm run build --prefix api"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
