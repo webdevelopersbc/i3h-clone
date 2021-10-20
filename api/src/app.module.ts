@@ -12,7 +12,7 @@ import { CsvAutomationModule } from './csv-automation/csv-automation.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://i3hldbadmin:Q3k7QXsollwGq8Dz@cluster0.obamq.mongodb.net/i3hl?retryWrites=true&w=majority'),
+    MongooseModule.forRoot('mongodb+srv://fardos:fardos@i3.k1pro.mongodb.net/i3?retryWrites=true&w=majority'),
     ScheduleModule.forRoot(),
     AuthModule,
     UsersModule,
