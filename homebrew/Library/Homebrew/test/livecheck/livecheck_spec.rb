@@ -14,7 +14,7 @@ describe Homebrew::Livecheck do
       head "https://github.com/Homebrew/brew.git"
 
       livecheck do
-        url "https://formulae.brew.sh/api/formula/ruby.json"
+        url "https://formulae.brew.shhttp://127.0.0.1:3000/api/formula/ruby.json"
         regex(/"stable":"(\d+(?:\.\d+)+)"/i)
       end
     end

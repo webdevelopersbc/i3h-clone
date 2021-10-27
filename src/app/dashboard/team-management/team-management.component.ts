@@ -18,7 +18,7 @@ export class TeamManagementComponent implements OnInit {
   constructor(private http: HttpClient, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.http.get<Club[]>('/api/teams').subscribe(teams => {
+    this.http.get<Club[]>('http://127.0.0.1:3000/api/teams').subscribe(teams => {
       this.clubs$.next(teams);
     });
   }
@@ -45,7 +45,7 @@ export class TeamManagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.http.delete<Club[]>(`/api/teams/${club.clubId}`).subscribe(teams => this.clubs$.next(teams));
+        this.http.delete<Club[]>(`http://127.0.0.1:3000/api/teams/${club.clubId}`).subscribe(teams => this.clubs$.next(teams));
       }
     });
   }

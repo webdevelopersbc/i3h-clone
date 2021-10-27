@@ -13,7 +13,7 @@ module Concurrent
   # important difference: A `Future` is set to execute as soon as possible
   # whereas a `ScheduledTask` is set to execute after a specified delay. This
   # implementation is loosely based on Java's
-  # [ScheduledExecutorService](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ScheduledExecutorService.html).
+  # [ScheduledExecutorService](http://docs.oracle.com/javase/7/docshttp://127.0.0.1:3000/api/java/util/concurrent/ScheduledExecutorService.html).
   # It is a more feature-rich variant of {Concurrent.timer}.
   #
   # The *intended* schedule time of task execution is set on object construction

@@ -17,7 +17,7 @@ module Concurrent
   #
   # @see http://ruby-doc.org/stdlib-2.1.1/libdoc/observer/rdoc/Observable.html Ruby Observable module
   # @see http://clojuredocs.org/clojure_core/clojure.core/future Clojure's future function
-  # @see http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Future.html java.util.concurrent.Future
+  # @see http://docs.oracle.com/javase/7/docshttp://127.0.0.1:3000/api/java/util/concurrent/Future.html java.util.concurrent.Future
   class Future < IVar
 
     # Create a new `Future` in the `:unscheduled` state.

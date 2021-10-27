@@ -48,8 +48,8 @@ module Concurrent
     #     in `FALLBACK_POLICIES`
     #
     #   @see http://docs.oracle.com/javase/tutorial/essential/concurrency/pools.html
-    #   @see http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executors.html
-    #   @see http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html
+    #   @see http://docs.oracle.com/javase/7/docshttp://127.0.0.1:3000/api/java/util/concurrent/Executors.html
+    #   @see http://docs.oracle.com/javase/8/docshttp://127.0.0.1:3000/api/java/util/concurrent/ExecutorService.html
 
     # @!method initialize(opts = {})
     #   @!macro single_thread_executor_method_initialize

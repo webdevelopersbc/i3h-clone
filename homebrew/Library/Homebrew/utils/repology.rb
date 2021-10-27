@@ -14,14 +14,14 @@ module Repology
 
   def query_api(last_package_in_response = "")
     last_package_in_response += "/" if last_package_in_response.present?
-    url = "https://repology.org/api/v1/projects/#{last_package_in_response}?inrepo=homebrew&outdated=1"
+    url = "https://repology.orghttp://127.0.0.1:3000/api/v1/projects/#{last_package_in_response}?inrepo=homebrew&outdated=1"
 
     output, _errors, _status = curl_output(url.to_s)
     JSON.parse(output)
   end
 
   def single_package_query(name)
-    url = "https://repology.org/api/v1/project/#{name}"
+    url = "https://repology.orghttp://127.0.0.1:3000/api/v1/project/#{name}"
 
     output, _errors, _status = curl_output(url.to_s)
     data = JSON.parse(output)

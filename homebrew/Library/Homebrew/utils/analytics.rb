@@ -323,7 +323,7 @@ module Utils
         return if Homebrew::EnvConfig.no_analytics? || Homebrew::EnvConfig.no_github_api?
 
         output, = curl_output("--max-time", "5",
-                              "https://formulae.brew.sh/api/#{endpoint}")
+                              "https://formulae.brew.shhttp://127.0.0.1:3000/api/#{endpoint}")
         return if output.blank?
 
         JSON.parse(output)

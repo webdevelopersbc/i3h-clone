@@ -47,7 +47,7 @@ module Concurrent
       #
       # @see https://github.com/grosser/parallel/blob/4fc8b89d08c7091fe0419ca8fba1ec3ce5a8d185/lib/parallel.rb
       #
-      # @see http://docs.oracle.com/javase/6/docs/api/java/lang/Runtime.html#availableProcessors()
+      # @see http://docs.oracle.com/javase/6/docshttp://127.0.0.1:3000/api/java/lang/Runtime.html#availableProcessors()
       # @see http://msdn.microsoft.com/en-us/library/aa394373(v=vs.85).aspx
       def processor_count
         @processor_count.value

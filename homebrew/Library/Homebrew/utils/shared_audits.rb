@@ -70,7 +70,7 @@ module SharedAudits
   def gitlab_repo_data(user, repo)
     @gitlab_repo_data ||= {}
     @gitlab_repo_data["#{user}/#{repo}"] ||= begin
-      out, _, status= curl_output("--request", "GET", "https://gitlab.com/api/v4/projects/#{user}%2F#{repo}")
+      out, _, status= curl_output("--request", "GET", "https://gitlab.comhttp://127.0.0.1:3000/api/v4/projects/#{user}%2F#{repo}")
       return unless status.success?
 
       JSON.parse(out)
@@ -84,7 +84,7 @@ module SharedAudits
     @gitlab_release_data ||= {}
     @gitlab_release_data[id] ||= begin
       out, _, status= curl_output(
-        "https://gitlab.com/api/v4/projects/#{user}%2F#{repo}/releases/#{tag}", "--fail"
+        "https://gitlab.comhttp://127.0.0.1:3000/api/v4/projects/#{user}%2F#{repo}/releases/#{tag}", "--fail"
       )
       return unless status.success?
 

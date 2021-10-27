@@ -165,9 +165,9 @@ module Concurrent
   #     Please read *Shutting Down Thread Pools* for more information.
   #
   #   @see http://docs.oracle.com/javase/tutorial/essential/concurrency/pools.html Java Tutorials: Thread Pools
-  #   @see http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executors.html Java Executors class
-  #   @see http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html Java ExecutorService interface
-  #   @see https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#setDaemon-boolean-
+  #   @see http://docs.oracle.com/javase/7/docshttp://127.0.0.1:3000/api/java/util/concurrent/Executors.html Java Executors class
+  #   @see http://docs.oracle.com/javase/8/docshttp://127.0.0.1:3000/api/java/util/concurrent/ExecutorService.html Java ExecutorService interface
+  #   @see https://docs.oracle.com/javase/8/docshttp://127.0.0.1:3000/api/java/lang/Thread.html#setDaemon-boolean-
 
 
 
@@ -197,7 +197,7 @@ module Concurrent
     #   @raise [ArgumentError] if `num_threads` is less than or equal to zero
     #   @raise [ArgumentError] if `fallback_policy` is not a known policy
     #
-    #   @see http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executors.html#newFixedThreadPool-int-
+    #   @see http://docs.oracle.com/javase/8/docshttp://127.0.0.1:3000/api/java/util/concurrent/Executors.html#newFixedThreadPool-int-
     def initialize(num_threads, opts = {})
       raise ArgumentError.new('number of threads must be greater than zero') if num_threads.to_i < 1
       defaults  = { max_queue:   DEFAULT_MAX_QUEUE_SIZE,

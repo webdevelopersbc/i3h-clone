@@ -23,7 +23,7 @@ module Concurrent
   #   will degrade rapidly due to contention on the single slot, but the algorithm
   #   will remain correct.
   #
-  #   @see http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Exchanger.html java.util.concurrent.Exchanger
+  #   @see http://docs.oracle.com/javase/7/docshttp://127.0.0.1:3000/api/java/util/concurrent/Exchanger.html java.util.concurrent.Exchanger
   #   @example
   #
   #     exchanger = Concurrent::Exchanger.new

@@ -1,2 +1,2 @@
 JWT_SECRET=7MEPF8KadeE7ymn5snBFjda9TF3x
-MONGO_URL=mongodb+srv://fardos:fardos@i3.k1pro.mongodb.net/i3?retryWrites=true&w=majority
+MONGO_URL=mongodb+srv://fardos:MxAptavxZhXBDcFDUWAdJzxNaYNNXS@cluster0.obamq.mongodb.net/i3h?retryWrites=true&w=majority

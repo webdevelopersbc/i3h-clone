@@ -80,7 +80,7 @@ module Concurrent
     #   @raise [ArgumentError] if `:fallback_policy` is not one of the values specified
     #     in `FALLBACK_POLICIES`
     #
-    #   @see http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ThreadPoolExecutor.html
+    #   @see http://docs.oracle.com/javase/7/docshttp://127.0.0.1:3000/api/java/util/concurrent/ThreadPoolExecutor.html
 
     # @!method initialize(opts = {})
     #   @!macro thread_pool_executor_method_initialize

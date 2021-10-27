@@ -44,7 +44,7 @@ module Concurrent
     #   @see http://algs4.cs.princeton.edu/24pq/index.php#2.6
     #   @see http://algs4.cs.princeton.edu/24pq/MaxPQ.java.html
     #
-    #   @see http://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html
+    #   @see http://docs.oracle.com/javase/7/docshttp://127.0.0.1:3000/api/java/util/PriorityQueue.html
     #
     # @!visibility private
     class NonConcurrentPriorityQueue < NonConcurrentPriorityQueueImplementation

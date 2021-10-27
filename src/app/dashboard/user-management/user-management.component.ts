@@ -19,15 +19,15 @@ export class UserManagementComponent implements OnInit {
   constructor(private http: HttpClient, private authService: AuthService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.users$ = this.http.get<AppUser[]>('/api/users');
+    this.users$ = this.http.get<AppUser[]>('http://127.0.0.1:3000/api/users');
   }
 
   makeAdmin(user: AppUser): void {
-    this.users$ = this.http.patch<AppUser[]>(`/api/users/${user.email}`, { name: user.name, isAdmin: true });
+    this.users$ = this.http.patch<AppUser[]>(`http://127.0.0.1:3000/api/users/${user.email}`, { name: user.name, isAdmin: true });
   }
 
   removeAccess(user: AppUser): void {
-    this.users$ = this.http.patch<AppUser[]>(`/api/users/${user.email}`, { name: user.name, isAdmin: false });
+    this.users$ = this.http.patch<AppUser[]>(`http://127.0.0.1:3000/api/users/${user.email}`, { name: user.name, isAdmin: false });
   }
 
   delete(user: AppUser): void {
@@ -38,7 +38,7 @@ export class UserManagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.users$ = this.http.delete<AppUser[]>(`/api/users/${user.email}`);
+        this.users$ = this.http.delete<AppUser[]>(`http://127.0.0.1:3000/api/users/${user.email}`);
       }
     });
   }

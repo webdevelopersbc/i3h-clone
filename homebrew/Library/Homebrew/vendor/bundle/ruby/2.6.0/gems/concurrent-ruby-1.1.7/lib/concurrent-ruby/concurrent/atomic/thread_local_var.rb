@@ -96,7 +96,7 @@ module Concurrent
   #
   #     v.value #=> 14
   #
-  #   @see https://docs.oracle.com/javase/7/docs/api/java/lang/ThreadLocal.html Java ThreadLocal
+  #   @see https://docs.oracle.com/javase/7/docshttp://127.0.0.1:3000/api/java/lang/ThreadLocal.html Java ThreadLocal
   #
   # @!macro thread_local_var_public_api
   class ThreadLocalVar < ThreadLocalVarImplementation

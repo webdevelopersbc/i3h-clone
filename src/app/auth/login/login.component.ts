@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.http
-      .post('/api/auth/login', this.loginForm.value)
+      .post('http://127.0.0.1:3000/api/auth/login', this.loginForm.value)
       .pipe(
         catchError(error => {
           this.snackbar.open(

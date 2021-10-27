@@ -84,7 +84,7 @@ export class AddTeamDialogComponent implements OnInit {
       });
 
     this.http
-      .post<Club[]>('/api/teams', { teams: clubsPayload })
+      .post<Club[]>('http://127.0.0.1:3000/api/teams', { teams: clubsPayload })
       .pipe(
         catchError(error => {
           console.log(error);

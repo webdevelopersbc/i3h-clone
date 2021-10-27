@@ -36,7 +36,7 @@ export class LatestDataComponent implements OnInit {
   }
 
   updateData(): void {
-    this.matches$ = this.http.get<Match[]>('/api/teams/matches').pipe(
+    this.matches$ = this.http.get<Match[]>('http://127.0.0.1:3000/api/teams/matches').pipe(
       map(matches => {
         return matches.sort((a, b) => {
           const aDate = moment.unix(a.timestamp);

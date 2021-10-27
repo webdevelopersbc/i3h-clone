@@ -23,7 +23,7 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     common_1.Module({
         imports: [
-            mongoose_1.MongooseModule.forRoot('mongodb+srv://fardos:fardos@i3.k1pro.mongodb.net/i3?retryWrites=true&w=majority'),
+            mongoose_1.MongooseModule.forRoot('mongodb+srv://fardosdev:VHxg362sPJDtFSGK@cluster0.obamq.mongodb.net/i3hl?retryWrites=true&w=majority'),
             schedule_1.ScheduleModule.forRoot(),
             auth_module_1.AuthModule,
             users_module_1.UsersModule,

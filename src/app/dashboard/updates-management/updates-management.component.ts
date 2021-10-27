@@ -35,7 +35,7 @@ export class UpdatesManagementComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<{ timeOfDay: string; timeZone: string }>(`/api/settings`).subscribe(settings => {
+    this.http.get<{ timeOfDay: string; timeZone: string }>(`http://127.0.0.1:3000/api/settings`).subscribe(settings => {
       this.timeOfDaySelected = settings.timeOfDay;
       this.timeZoneSelected = settings.timeZone;
       this.loadedSettings = {
@@ -47,7 +47,7 @@ export class UpdatesManagementComponent implements OnInit {
 
   saveSettings(): void {
     this.http
-      .post<{ timeOfDay: string; timeZone: string }>(`/api/settings`, {
+      .post<{ timeOfDay: string; timeZone: string }>(`http://127.0.0.1:3000/api/settings`, {
         timeOfDay: this.timeOfDaySelected,
         timeZone: this.timeZoneSelected,
       })
@@ -63,7 +63,7 @@ export class UpdatesManagementComponent implements OnInit {
 
   update(): void {
     this.updating = true;
-    this.http.get<void>('/api/nhlapi/update').subscribe(() => {
+    this.http.get<void>('http://127.0.0.1:3000/api/nhlapi/update').subscribe(() => {
       this.updating = false;
       this.updated.emit();
     });

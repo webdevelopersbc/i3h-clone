@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.http
-      .post('/api/auth/register', this.registrationForm.value)
+      .post('http://127.0.0.1:3000/api/auth/register', this.registrationForm.value)
       .pipe(
         catchError(error => {
           let message = 'There was an error registering your account. Try again later or contact administration.';
